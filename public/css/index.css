@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+body 
+{
+    background-color: #4EC199;
+    color : brown;
+}
+
+p
+{
+    transition: all 1s;    
+}
+
+p:hover
+{
+    background-color: white;
+}
+
+span
+{
+    color: blue;
+}
+
+h1
+{
+    font-family: serif;   
+    border-bottom: 3px solid red;
+}
+
+.content
+{
+    display: inline-block;
+    border: 3px solid red;
+    width:30%;
+    margin-bottom: 3px;
+    vertical-align: top;
+}
+
+.post
+{
+    border: 1px solid blue;
+}
