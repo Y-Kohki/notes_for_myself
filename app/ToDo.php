@@ -14,4 +14,9 @@ class ToDo extends Model
         'end_time',
         'title',
     ];
+    protected $dates = [
+        'start_time',
+        'end_time',
+    ];
+
 }

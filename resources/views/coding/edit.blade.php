@@ -16,9 +16,26 @@
                 </div>
                 <div class="content__body">
                     <h2>Body</h2>
-                    <input type='text' name='coding[body]' value="{{ $coding->body }}">
+                    <input id='textarea' type='text' name='coding[body]' value="{{ $coding->body }}">
                 </div>
             <input type="submit" value="保存"/>
         </form>
+        <button type="button" onclick="addText();">コードブロック</button>
+        
+        <script>
+            function addText()
+            {
+	            var area = document.getElementById('textarea');
+	            area.value = area.value.substr(0, area.selectionStart)
+		            	+
+		            	'\n```\n'
+		            	
+			            + area.value.substr(area.selectionStart, area.selectionEnd - area.selectionStart)
+		            	+
+		            	'\n```\n'
+		            	
+		            	+ area.value.substr(area.selectionEnd);
+            }
+        </script>
     </body>
 </html>

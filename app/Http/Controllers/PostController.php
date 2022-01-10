@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function index(Starbucks $starbucks, Coding $coding, ToDo $to_do)
     {
-        return view('index')->with(['starbucks' => $starbucks->get(), 'coding' => $coding->get(), 'to_do' => $to_do->get()]);  
+        return view('index')->with(['starbucks' => $starbucks->get(), 'coding' => $coding->get(), 'to_do' => $to_do->get() ]);  
     }
     
     public function show(Starbucks $starbucks)
@@ -62,7 +62,8 @@ class PostController extends Controller
     
     public function codingShow(Coding $coding)
     {
-        return view('coding/show')->with(['coding' => $coding]);
+        $explode = explode("```", $coding->body);
+        return view('coding/show')->with(['coding' => $coding, 'explode' => $explode]);
     }
     
     Public function codingEdit(Coding $coding)

@@ -35,7 +35,6 @@
                         <h2 class='title'>
                             <a href="/coding/{{ $coding_post->id }}">{{ $coding_post->title }}</a>
                         </h2>
-                        <p class='body'>{{ $coding_post->body }}</p>
                     </div>
                 @endforeach
                 [<a href='/coding/create'>create</a>]
@@ -48,7 +47,11 @@
                 @foreach ($to_do as $to_do_post)
                     <div class='post'>
                         <h2 class='title'>
-                            <a href="/to_do/{{ $to_do_post->id }}/edit">{{ $to_do_post->start_time}}~{{ $to_do_post->end_time}}<br>{{ $to_do_post->title }}</a>
+                            @if($to_do_post->start_time == $to_do_post->end_time)
+                                <a href="/to_do/{{ $to_do_post->id }}/edit">{{ $to_do_post->start_time->format('Y年n月j日G時') }}<br>{{ $to_do_post->title }}</a>
+                            @else
+                                <a href="/to_do/{{ $to_do_post->id }}/edit">{{ $to_do_post->start_time->format('Y年n月j日G時') }}~{{ $to_do_post->end_time->format('G時') }}<br>{{ $to_do_post->title }}</a>
+                            @endif
                         </h2>
                         <form action="/to_do/{{ $to_do_post->id }}" id="form_delete" method="post">
                             @csrf

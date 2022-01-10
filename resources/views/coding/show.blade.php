@@ -14,7 +14,23 @@
         </h1>
         <div class="content">
             <div class="content__post">
-                <p>{{ $coding->body }}</p>
+                @foreach($explode as $body)
+                    @if($loop->iteration % 2 == 0)
+                        <input id="copyTarget.{{ $loop->iteration }}" type="text" value="{{ $body }}" readonly>
+                        <button onclick="copyToClipboard{{ $loop->iteration }}()">Copy text</button>
+                        <script>
+                            function copyToClipboard{{ $loop->iteration }}()
+                            {
+                            var copyTarget = document.getElementById("copyTarget.{{ $loop->iteration }}");
+                            copyTarget.select();
+                            document.execCommand("Copy");
+                            alert("コピーできました！ : " + copyTarget.value);
+                            }
+                        </script>
+                    @else
+                        <p>{{ $body }}</p>
+                    @endif
+                @endforeach    
             </div>
         </div>
         <div class="footer">
