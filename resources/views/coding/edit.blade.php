@@ -5,6 +5,9 @@
         <title>Starbucks</title>
     </head>
     <body>
+        @extends('layouts.app')
+
+        @section('content')
         <h1 class="title">編集画面</h1>
         <div class="content">
             <form action="/coding/{{ $coding->id }}" method="POST">
@@ -37,5 +40,6 @@
 		            	+ area.value.substr(area.selectionEnd);
             }
         </script>
+        @endsection
     </body>
 </html>

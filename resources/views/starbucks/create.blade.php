@@ -5,6 +5,9 @@
         <title>Starbucks</title>
     </head>
     <body>
+        @extends('layouts.app')
+
+        @section('content')
         <h1>Starbucks Notes</h1>
         <form action="/starbucks" method="POST">
             @csrf
@@ -37,5 +40,6 @@
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/">back</a>]</div>
+        @endsection
     </body>
 </html>

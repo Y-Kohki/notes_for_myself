@@ -7,12 +7,16 @@ use App\Customs;
 use Illuminate\Http\Request;
 use App\Coding;
 use App\ToDo;
+use Carbon\Carbon;
+use Spatie\GoogleCalendar\Event;
 
 class PostController extends Controller
 {
     public function index(Starbucks $starbucks, Coding $coding, ToDo $to_do)
     {
-        return view('index')->with(['starbucks' => $starbucks->get(), 'coding' => $coding->get(), 'to_do' => $to_do->get() ]);  
+        $events = Event::get(); // 未来の全イベントを取得する
+        
+        return view('index')->with(['starbucks' => $starbucks->get(), 'coding' => $coding->get(), 'to_do' => $to_do->get(), 'events' => $events ]);  
     }
     
     public function show(Starbucks $starbucks)
@@ -97,15 +101,22 @@ class PostController extends Controller
         return redirect('/');
     }
     
-    Public function toDoEdit(ToDo $to_do)
+    Public function toDoEdit($to_do)
     {
-        return view('to_do/edit')->with(['to_do' => $to_do]);
+        $event = Event::find( $to_do );
+        return view('to_do/edit')->with(['event' => $event]);
     }
     
-    public function toDoUpdate(Request $request, ToDo $to_do)
+    public function toDoUpdate(Request $request, $to_do)
     {
         $input_to_do = $request['to_do'];
-        $to_do->fill($input_to_do)->save();
+        $dt1 = new Carbon( $input_to_do['startDateTime'] );
+        $dt2 = new Carbon( $input_to_do['endDateTime'] );
+        $event = Event::find($to_do);
+        $event->name = $input_to_do['name'];
+        $event->startDateTime = $dt1;
+        $event->endDateTime = $dt2;
+        $event->save();
         return redirect('/');
     }
     
@@ -114,17 +125,29 @@ class PostController extends Controller
         return view('to_do/create');
     }
     
-    public function toDoStore(Request $request, ToDo $to_do)
+    public function toDoStore(Request $request)
     {
         $input_to_do = $request['to_do'];
-        $to_do->fill($input_to_do)->save();
+        
+        $dt1 = new Carbon( $input_to_do['start_time'] );
+        $dt2 = new Carbon( $input_to_do['end_time'] );
+        $event = new Event;
+        $event->name = $input_to_do['title'];
+        $event->startDateTime = $dt1 ;
+        $event->endDateTime = $dt2 ;
+        $new_event = $event->save();
+
+        return redirect('/');
+
+    }
+    
+    public function toDoDelete($to_do)
+    {
+        $event = Event::find($to_do);
+        $event->delete();
         return redirect('/');
     }
     
-    public function toDoDelete(ToDo $to_do)
-    {
-        $to_do->delete();
-        return redirect('/');
-    }
+    
 }
 ?>

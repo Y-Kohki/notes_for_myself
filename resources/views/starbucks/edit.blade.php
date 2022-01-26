@@ -5,6 +5,9 @@
         <title>Starbucks</title>
     </head>
     <body>
+        @extends('layouts.app')
+
+        @section('content')
         <h1 class="title">編集画面</h1>
         <div class="content">
             <form action="/starbucks/{{ $starbucks->id }}" method="POST">
@@ -38,5 +41,6 @@
             </div>
             <input type="submit" value="保存"/>
         </form>
+        @endsection
     </body>
 </html>

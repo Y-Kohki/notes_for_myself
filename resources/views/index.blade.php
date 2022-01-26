@@ -8,9 +8,15 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1><span>N</span>otes <span>F</span>or <span>M</span>yself</h1>
+        
+        @extends('layouts.app')
+
+        @section('content')
+        <div class=note>
         <div class='content starbucks'>
-            <h2>Starbucks</h2>
+            <h2 class='mainTitle'>Starbucks</h2>
+            <a class='create' href='/starbucks/create'>新規メモ</a>
+            <div class='list'>
             @foreach ($starbucks as $post)
                 <div class='post'>
                     <h2 class='title'>
@@ -24,12 +30,14 @@
                     <p class='evaluation'>{{ $post->evaluation }}</p>
                 </div>
             @endforeach
-            [<a href='/starbucks/create'>create</a>]
+            </div>
         </div>
         
         <div class='content coding'>
             <div class='coding'>
-                <h2 class='title'>Coding</h2>
+                <h2 class='mainTitle'>Coding</h2>
+                <a class='create' href='/coding/create'>新規メモ</a>
+                <div class='list'>
                 @foreach ($coding as $coding_post)
                     <div class='post'>
                         <h2 class='title'>
@@ -37,42 +45,38 @@
                         </h2>
                     </div>
                 @endforeach
-                [<a href='/coding/create'>create</a>]
+                </div>
             </div>
         </div>
         
         <div class='content to_do'>
             <div class='to_do'>
-                <h2 class='title'>ToDo</h2>
-                @foreach ($to_do as $to_do_post)
+                <h2 class='mainTitle'>ToDo</h2>
+                <a class='create' href='/to_do/create'>新規メモ</a>
+                
+                <div class='list'>
+                @foreach ($events as $event) 
                     <div class='post'>
-                        <h2 class='title'>
-                            @if($to_do_post->start_time == $to_do_post->end_time)
-                                <a href="/to_do/{{ $to_do_post->id }}/edit">{{ $to_do_post->start_time->format('Y年n月j日G時') }}<br>{{ $to_do_post->title }}</a>
-                            @else
-                                <a href="/to_do/{{ $to_do_post->id }}/edit">{{ $to_do_post->start_time->format('Y年n月j日G時') }}~{{ $to_do_post->end_time->format('G時') }}<br>{{ $to_do_post->title }}</a>
-                            @endif
-                        </h2>
-                        <form action="/to_do/{{ $to_do_post->id }}" id="form_delete" method="post">
+                        <form action="/to_do/{{ $event->id }}"  method="post">
                             @csrf
                             @method('DELETE')
                             <input type='submit' style='display:none'>
-                            <p>[<span onclick='return deletePost(this);'>delete</span>]</p> 
+                            <button type="submit">delete</button>
                         </form>
+                        <h3 class='title'>
+                                <a href="/to_do/{{ $event->id }}/edit">{{ $event->startDateTime->format('Y年n月j日G時') }}~{{ $event->endDateTime->format('G時') }}<br>{{ $event->name }}</a>
+                        </h3>
+                        
                     </div>
                 @endforeach
-                [<a href='/to_do/create'>create</a>]
+                
+                <div class='calendar'>
+                    <iframe src="https://calendar.google.com/calendar/embed?src=f6f9tala35h9r6v285k66j88is%40group.calendar.google.com&ctz=Asia%2FTokyo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                </div>
+                </div>
             </div>
         </div>
-        <script>
-            function deletePost(e)
-            {
-                'use strict';
-                if(confirm('削除すると復元できません。本当に削除しますか？'))
-                {
-                    document.getElementById('form_delete').submit();
-                }
-            }
-        </script>
+        </div>
+        @endsection
     </body>
 </html>

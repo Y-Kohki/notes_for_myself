@@ -5,6 +5,9 @@
         <title>Coding</title>
     </head>
     <body>
+        @extends('layouts.app')
+
+        @section('content')
         <h1>Coding Notes</h1>
         <form action="/coding" method="POST">
             @csrf
@@ -39,7 +42,6 @@
 		            	+ area.value.substr(area.selectionEnd);
             }
         </script>
-        
-        
+        @endsection
     </body>
 </html>

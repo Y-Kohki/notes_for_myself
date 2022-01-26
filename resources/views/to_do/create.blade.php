@@ -5,6 +5,9 @@
         <title>ToDo</title>
     </head>
     <body>
+        @extends('layouts.app')
+
+        @section('content')
         <h1>ToDo Notes</h1>
         <form action="/to_do" method="POST">
             @csrf
@@ -23,5 +26,6 @@
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/">back</a>]</div>
+        @endsection
     </body>
 </html>

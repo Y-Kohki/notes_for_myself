@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d15ac26b6205e067cbc80d133b87023",
+    "content-hash": "18ceae4257a04d7542d529095ff71de6",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2586,6 +2586,81 @@
                 }
             ],
             "time": "2021-09-25T23:07:42+00:00"
+        },
+        {
+            "name": "spatie/laravel-google-calendar",
+            "version": "3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-google-calendar.git",
+                "reference": "b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-google-calendar/zipball/b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7",
+                "reference": "b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7",
+                "shasum": ""
+            },
+            "require": {
+                "google/apiclient": "^2.2",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "nesbot/carbon": "^2.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.3|^1.4",
+                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0",
+                "phpunit/phpunit": "^8.4|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\GoogleCalendar\\GoogleCalendarServiceProvider"
+                    ],
+                    "aliases": {
+                        "GoogleCalendar": "Spatie\\GoogleCalendar\\GoogleCalendarFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\GoogleCalendar\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Manage events on a Google Calendar",
+            "homepage": "https://github.com/spatie/laravel-google-calendar",
+            "keywords": [
+                "calendar",
+                "event",
+                "google",
+                "laravel-google-calendar",
+                "schedule",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-google-calendar/issues",
+                "source": "https://github.com/spatie/laravel-google-calendar/tree/3.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-01-13T09:43:27+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5298,6 +5373,60 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "laravel/ui",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "21dc7e58896db977aad246e710b4810aaab9a968"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/21dc7e58896db977aad246e710b4810aaab9a968",
+                "reference": "21dc7e58896db977aad246e710b4810aaab9a968",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.8|^6.0",
+                "illuminate/filesystem": "~5.8|^6.0",
+                "illuminate/support": "~5.8|^6.0",
+                "php": "^7.1.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Ui\\UiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Ui\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel UI utilities and presets.",
+            "keywords": [
+                "laravel",
+                "ui"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/ui/issues",
+                "source": "https://github.com/laravel/ui/tree/v1.3.0"
+            },
+            "time": "2020-11-03T19:38:34+00:00"
         },
         {
             "name": "mockery/mockery",

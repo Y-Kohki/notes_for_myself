@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware' => 'auth'], function(){
 Route::get('/', 'PostController@index');
 Route::post('/starbucks', 'PostController@store');
 Route::get('/starbucks/create', 'PostController@create');
@@ -32,3 +32,10 @@ Route::get('/to_do/create', 'PostController@toDoCreate');
 Route::get('/to_do/{to_do}/edit', 'PostController@toDoEdit');
 Route::put('/to_do/{to_do}', 'PostController@toDoUpdate');
 Route::delete('/to_do/{to_do}', 'PostController@toDoDelete');
+
+
+Route::resource('/calendar', 'GoogleCalendarController');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

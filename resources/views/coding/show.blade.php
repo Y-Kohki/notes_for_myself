@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
+        @extends('layouts.app')
+
+        @section('content')
         <h1 class="title">
             {{ $coding->title }}
         </h1>
@@ -53,5 +56,6 @@
                 }
             }
         </script>
+        @endsection
     </body>
 </html>
