@@ -5,11 +5,9 @@
 /vendor
 .env
 .env.backup
-.env.heroku
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
 notes-for-myself-7639e09be82e.json
-notes-for-myself-7639e09be82e.json.heroku
