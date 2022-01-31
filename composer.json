@@ -62,6 +62,9 @@
         ],
         "compile": [
             "@php -r \"file_exists('.env') || copy('.env.heroku', '.env');\""
+        ],
+        "compile": [
+            "@php -r \"file_exists('notes-for-myself-7639e09be82e.json') || copy('notes-for-myself-7639e09be82e.json.heroku', 'notes-for-myself-7639e09be82e.json');\""
         ]
     }
 }
