@@ -6,43 +6,45 @@
         <title>Coding</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="{{ asset('/css/show.css')}}" type="text/css">
     </head>
     <body>
         @extends('layouts.app')
 
         @section('content')
-        <h1 class="title">
+        <div class='main'>
+        <h2 class="title">
             {{ $coding->title }}
-        </h1>
+        </h2>
         <div class="content">
             <div class="content__post">
                 @foreach($explode as $body)
                     @if($loop->iteration % 2 == 0)
                         <input id="copyTarget.{{ $loop->iteration }}" type="text" value="{{ $body }}" readonly>
-                        <button onclick="copyToClipboard{{ $loop->iteration }}()">Copy text</button>
+                        <button onclick="copyToClipboard{{ $loop->iteration }}()">コピー</button>
                         <script>
                             function copyToClipboard{{ $loop->iteration }}()
                             {
                             var copyTarget = document.getElementById("copyTarget.{{ $loop->iteration }}");
                             copyTarget.select();
                             document.execCommand("Copy");
-                            alert("コピーできました！ : " + copyTarget.value);
+                            alert("コピーしました！ : " + copyTarget.value);
                             }
                         </script>
                     @else
-                        <p>{{ $body }}</p>
+                        
+                        <p><br>{{ $body }}</p>
                     @endif
                 @endforeach    
             </div>
         </div>
         <div class="footer">
-            <p class="edit">[<a href="/coding/{{ $coding->id }}/edit">edit</a>]</p>
+            <p class="edit"><a href="/coding/{{ $coding->id }}/edit">編集</a></p>
             <form action="/coding/{{ $coding->id }}" id="form_delete" method="post">
                 @csrf
                 @method('DELETE')
                 <input type='submit' style='display:none'>
-                <p>[<span onclick='return deletePost(this);'>delete</span>]</p> 
+                <p><span onclick='return deletePost(this);'>削除</span></p> 
             </form>
             <a href="/">戻る</a>
         </div>
@@ -56,6 +58,7 @@
                 }
             }
         </script>
+        </div>
         @endsection
     </body>
 </html>

@@ -3,29 +3,31 @@
     <head>
         <meta charset="utf-8">
         <title>Coding</title>
+        <link rel="stylesheet" href="{{ asset('/css/create.css')}}" type="text/css">
     </head>
     <body>
         @extends('layouts.app')
 
         @section('content')
-        <h1>Coding Notes</h1>
+        <div class='main'>
+        <h1>新規メモ</h1>
         <form action="/coding" method="POST">
             @csrf
             <div class="title">
-                <h2>Title</h2>
-                <input type="text" name="coding[title]" placeholder="タイトル"/>
+                <h4><br>タイトル</h2>
+                <input type="text" style="width: 400px;" name="coding[title]" placeholder="タイトル"/>
             </div>
             <div class="body">
-                <h2>Body</h2>
-                <textarea id="textarea" name="coding[body]" placeholder="本文"></textarea>
-                
-                
-                
+                <h4><br>本文</h2>
+                <textarea id="textarea" style="width: 800px; height:400px; white-space:pre-wrap;" name="coding[body]" placeholder="本文"></textarea>
+                <br>
+                <button type="button" onclick="addText();">コードブロック</button>
+                <br><br>
             <input type="submit" value="保存"/>
         </form>
-        <button type="button" onclick="addText();">コードブロック</button>
-        
-        <div class="back">[<a href="/">back</a>]</div>
+    
+        <br><br>
+        <div class="back"><a href="/">戻る</a></div>
         
         <script>
             function addText()
@@ -42,6 +44,7 @@
 		            	+ area.value.substr(area.selectionEnd);
             }
         </script>
+        </div>
         @endsection
     </body>
 </html>

@@ -27,7 +27,7 @@
                         {{ $custom->custom }}
                     @endforeach
                     <p class='memo'>{{ $post->memo }}</p>
-                    <p class='evaluation'>{{ $post->evaluation }}</p>
+                    <p class='evaluation'>{{ $post->evaluation }}点</p>
                 </div>
             @endforeach
             </div>

@@ -73,7 +73,14 @@ body {
   color: #212529;
   text-align: left;
   background-color: #ffffe0;
+  padding-top: 20px;
 }
+
+span
+{
+    color: blue;
+}
+
 
 .container
 {
@@ -90,11 +97,6 @@ body {
 .navbar-toggler
 {
   font-size: 2.0rem;
-}
-
-span
-{
-    color: blue;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

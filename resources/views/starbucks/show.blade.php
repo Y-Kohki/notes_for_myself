@@ -1,20 +1,21 @@
 <!DOCTYPE HTML>
 <html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
     <head>
-        @extends('layouts.app')
-
-        @section('content')
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Original Drink</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="{{ asset('/css/show.css')}}" type="text/css">
     </head>
     <body>
-        <h1 class="title">
+        @extends('layouts.app')
+
+        @section('content')
+        <div class='main'>
+        <h2 class="title">
             {{ $starbucks->original_drink }}
-        </h1>
+        </h2>
         <div class="content">
             <div class="content__post">
                 <p>{{ $starbucks->drink }}</p>
@@ -26,12 +27,12 @@
             </div>
         </div>
         <div class="footer">
-            <p class="edit">[<a href="/starbucks/{{ $starbucks->id }}/edit">edit</a>]</p>
+            <p class="edit"><a href="/starbucks/{{ $starbucks->id }}/edit">編集</a></p>
             <form action="/starbucks/{{ $starbucks->id }}" id="form_delete" method="post">
                 @csrf
                 @method('DELETE')
                 <input type='submit' style='display:none'>
-                <p>[<span onclick='return deletePost(this);'>delete</span>]</p> 
+                <p><span onclick='return deletePost(this);'>削除</span></p> 
             </form>
             <a href="/">戻る</a>
         </div>
@@ -46,5 +47,6 @@
             }
         </script>
         @endsection
+        </div>
     </body>
 </html>

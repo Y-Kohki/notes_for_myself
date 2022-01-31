@@ -3,29 +3,34 @@
     <head>
         <meta charset="utf-8">
         <title>ToDo</title>
+        <link rel="stylesheet" href="{{ asset('/css/create.css')}}" type="text/css">
     </head>
     <body>
         @extends('layouts.app')
 
         @section('content')
-        <h1>ToDo Notes</h1>
+        <div class='main'>
+        <h1>新規メモ</h1>
         <form action="/to_do" method="POST">
             @csrf
             <div class="start_time">
-                <h2>start_time</h2>
-                <input type="text" name="to_do[start_time]" placeholder="開始時刻" value="{{ \Carbon\Carbon::tomorrow() }}"/>
+                <h4><br>開始時刻</h4>
+                <input type="text"　name="to_do[start_time]" placeholder="開始時刻" value="{{ \Carbon\Carbon::tomorrow() }}"/>
             </div>
             <div class="end_time">
-                <h2>end_time</h2>
+                <h4><br>終了時刻</h4>
                 <input type="text" name="to_do[end_time]" placeholder="終了時刻" value="{{ \Carbon\Carbon::tomorrow() }}"/>
             </div>
             <div class="title">
-                <h2>Title</h2>
-                <input type="text" name="to_do[title]" placeholder="タイトル"/>
+                <h4><br>タイトル</h4>
+                <input type="text" style="width: 400px;"　name="to_do[title]" placeholder="タイトル"/>
             </div>
+            <br>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/">back</a>]</div>
+        <br>
+        <div class="back"><a href="/">戻る</a></div>
+        </div>
         @endsection
     </body>
 </html>

@@ -1,20 +1,13 @@
 @charset "utf-8";
 
-body 
-{
-    background-color: #ffffe0;
-    color : brown;
-    padding-top: 30px;
 
-} 　 
     
 
-
-
-span
+a
 {
-    color: blue;
+    display: block;
 }
+
 
 h1
 {
@@ -25,7 +18,6 @@ h1
 .content
 {
     display: inline-block;
-    border: 4px solid #f0f8ff;
     width:30%;
     margin-bottom: 3px;
 

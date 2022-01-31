@@ -3,24 +3,26 @@
     <head>
         <meta charset="utf-8">
         <title>Starbucks</title>
+        <link rel="stylesheet" href="{{ asset('/css/create.css')}}" type="text/css">
     </head>
     <body>
         @extends('layouts.app')
 
         @section('content')
-        <h1>Starbucks Notes</h1>
+        <div class='main'>
+        <h1>新規メモ</h1>
         <form action="/starbucks" method="POST">
             @csrf
             <div class="title">
-                <h2>Title</h2>
-                <input type="text" name="starbucks[original_drink]" placeholder="タイトル"/>
+                <h4><br>タイトル</h4>
+                <input type="text" style="width: 400px;" name="starbucks[original_drink]" placeholder="タイトル"/>
             </div>
             <div class="drink">
-                <h2>Drink</h2>
-                <textarea name="starbucks[drink]" placeholder="キャラメルフラペチーノ"></textarea>
+                <h4><br>ドリンク</h4>
+                <input type='text' style="width: 400px;" name="starbucks[drink]" placeholder="フラペチーノ等">
             </div>
             <div class="customs">
-                <h2>Customs</h2>
+                <h4><br>カスタム</h4>
                 @foreach($customs as $custom)
                     <label>
                         <input type="checkbox" value="{{ $custom->id }}" name="customs_array[]">
@@ -30,16 +32,19 @@
                 @endforeach 
             </div>
             <div class="memo">
-                <h2>Memo</h2>
-                <textarea name="starbucks[memo]" placeholder="備考"></textarea>
+                <h4><br>備考</h4>
+                <textarea name="starbucks[memo]" style="width: 400px; height: 100px;" placeholder="備考"></textarea>
             </div>
             <div class="evaluation">
-                <h2>Evaluation</h2>
-                <textarea name="starbucks[evaluation]" placeholder="評価"></textarea>
+                <h4><br>10段階評価</h4>
+                <input type="number" name="starbucks[evaluation]" min="1" max="10" value="5">
             </div>
+            <br>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/">back</a>]</div>
+        <br>
+        <div class="back"><a href="/">戻る</a></div>
         @endsection
+        </div>
     </body>
 </html>
