@@ -20,7 +20,7 @@
             <div class="content__post">
                 @foreach($explode as $body)
                     @if($loop->iteration % 2 == 0)
-                        <input id="copyTarget.{{ $loop->iteration }}" type="text" value="{{ $body }}" readonly>
+                        <textarea id="copyTarget.{{ $loop->iteration }}" style="width: 800px; white-space:pre-wrap;">{{ $body }}</textarea>
                         <button onclick="copyToClipboard{{ $loop->iteration }}()">コピー</button>
                         <script>
                             function copyToClipboard{{ $loop->iteration }}()
