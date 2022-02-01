@@ -63,9 +63,9 @@
                             <input type='submit' style='display:none'>
                             <button type="submit">delete</button>
                         </form>
-                        <h3 class='title'>
+                        <h4 class='title'>
                                 <a href="/to_do/{{ $event->id }}/edit">{{ $event->startDateTime->format('Y年n月j日G時') }}~{{ $event->endDateTime->format('G時') }}<br>{{ $event->name }}</a>
-                        </h3>
+                        </h4>
                         
                     </div>
                 @endforeach
