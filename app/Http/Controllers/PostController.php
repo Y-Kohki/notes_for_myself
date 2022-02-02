@@ -15,7 +15,8 @@ class PostController extends Controller
 {
     public function index(Starbucks $starbucks, Coding $coding, ToDo $to_do)
     {
-        $events = Event::get(); // 未来の全イベントを取得する
+        $events = [];
+        //Event::get(); // 未来の全イベントを取得する
         
         return view('index')->with(['starbucks' => $starbucks->get(), 'coding' => $coding->get(), 'to_do' => $to_do->get(), 'events' => $events ]);  
     }
