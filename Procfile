@@ -1,2 +1,4 @@
-web: vendor/bin/heroku-php-apache2 public/
 web: echo 'あいうえお' 
+web: vendor/bin/heroku-php-apache2 public/
+
+
