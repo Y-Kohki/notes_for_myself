@@ -17,7 +17,7 @@ class CreateCustomsTable extends Migration
             $table->increments('id');
             $table->string('custom');
         });
-        DB::table('customss')->insert([
+        DB::table('customs')->insert([
         ['custom' => 'extra_whip'],
         ['custom' => 'light_whip'],
         ['custom' => 'no_whip'],
